@@ -10,10 +10,12 @@ async function customSaveAs() {
   const document = activeEditor.document;
   const fileUri = document.uri;
 
-  if (fileUri.scheme !== 'file') {
-    vscode.window.showErrorMessage('Cannot rename a non-file document');
-    return;
-  }
+  console.log('fileUri.scheme', fileUri.scheme);
+
+  //if (fileUri.scheme !== 'file') {
+  //  vscode.window.showErrorMessage('Cannot rename a non-file document');
+  //  return;
+  //}
 
   const defaultUri = document.isUntitled
     ? (vscode.workspace.workspaceFolders?.[0]?.uri ?? vscode.Uri.file(''))
