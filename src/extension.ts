@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 
-async function customSaveAs() {
+async function renameFile() {
   const activeEditor = vscode.window.activeTextEditor;
   if (!activeEditor) {
     return;
@@ -10,21 +10,15 @@ async function customSaveAs() {
   const document = activeEditor.document;
   const fileUri = document.uri;
 
-  console.log('fileUri.scheme', fileUri.scheme);
-
-  //if (fileUri.scheme !== 'file') {
-  //  vscode.window.showErrorMessage('Cannot rename a non-file document');
-  //  return;
-  //}
-
-  const defaultUri = document.isUntitled
-    ? (vscode.workspace.workspaceFolders?.[0]?.uri ?? vscode.Uri.file(''))
-    : document.uri;
-
-  let fileName = path.basename(defaultUri.fsPath);
-  const newFileName = fileName.toLowerCase().split(' ').join('-');
+  if (fileUri.scheme !== 'file') {
+    vscode.window.showErrorMessage('Cannot rename a non-file document');
+    return;
+  }
 
   const fileDir = path.dirname(fileUri.fsPath);
+  const fileExt = path.extname(fileUri.fsPath);
+  const fileName = path.basename(fileUri.fsPath, fileExt);
+  const newFileName = `${fileName}-renamed${fileExt}`;
   const newFileUri = vscode.Uri.file(path.join(fileDir, newFileName));
 
   // Rename the file
@@ -36,10 +30,9 @@ async function customSaveAs() {
 }
 
 export function activate(context: vscode.ExtensionContext) {
-  // Register the custom "Save As" command
-  console.log('Congratulations, your extension "Renamer" is now active!');
+  // Register the "Rename File" command
   context.subscriptions.push(
-    vscode.commands.registerCommand('renamer.customSaveAs', customSaveAs)
+    vscode.commands.registerCommand('myExtension.renameFile', renameFile)
   );
 
   // The rest of your activate function code
