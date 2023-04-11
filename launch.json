@@ -5,5 +5,5 @@
   "runtimeExecutable": "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code",
   "args": ["--extensionDevelopmentPath=${workspaceFolder}"],
   "outFiles": ["${workspaceFolder}/out/**/*.js"],
-  "preLaunchTask": "${defaultBuildTask}"
+  "preLaunchTask": "tsc: build - tsconfig.json"
 }
