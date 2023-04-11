@@ -1,9 +1,28 @@
 {
-  "name": "Run Extension",
-  "type": "extensionHost",
-  "request": "launch",
-  "runtimeExecutable": "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code",
-  "args": ["--extensionDevelopmentPath=${workspaceFolder}"],
-  "outFiles": ["${workspaceFolder}/out/**/*.js"],
-  "preLaunchTask": "tsc: build - tsconfig.json"
+  "version": "0.2.0",
+  "configurations": [
+    // ... your existing configurations
+    {
+      "name": "Run Extension",
+      "type": "extensionHost",
+      "request": "launch",
+      "runtimeExecutable": "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code",
+      "args": ["--extensionDevelopmentPath=${workspaceFolder}"],
+      "outFiles": ["${workspaceFolder}/out/**/*.js"],
+      "preLaunchTask": "tsc: build - tsconfig.json"
+    },
+    {
+      "name": "Extension (New)",
+      "type": "extensionHost",
+      "request": "launch",
+      "runtimeExecutable": "${execPath}",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/out/**/*.js"
+      ],
+      "preLaunchTask": "tsc: build - tsconfig.json"
+    }
+  ]
 }
