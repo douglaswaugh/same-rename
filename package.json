@@ -17,8 +17,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "renamer.helloWorld",
-        "title": "Hello World"
+        "command": "renamer.customSaveAs",
+        "title": "Custom Save As"
       }
     ]
   },
