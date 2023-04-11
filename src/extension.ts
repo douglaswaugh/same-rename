@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 
-async function renameFile() {
+async function customSaveAs() {
   const activeEditor = vscode.window.activeTextEditor;
   if (!activeEditor) {
     return;
@@ -32,7 +32,7 @@ async function renameFile() {
 export function activate(context: vscode.ExtensionContext) {
   // Register the "Rename File" command
   context.subscriptions.push(
-    vscode.commands.registerCommand('myExtension.renameFile', renameFile)
+    vscode.commands.registerCommand('renamer.customSaveAs', customSaveAs)
   );
 
   // The rest of your activate function code
