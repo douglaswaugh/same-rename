@@ -15,10 +15,14 @@ async function customSaveAs() {
     return;
   }
 
+  const defaultUri = document.isUntitled
+    ? (vscode.workspace.workspaceFolders?.[0]?.uri ?? vscode.Uri.file(''))
+    : document.uri;
+
+  let fileName = path.basename(defaultUri.fsPath);
+  const newFileName = fileName.toLowerCase().split(' ').join('-');
+
   const fileDir = path.dirname(fileUri.fsPath);
-  const fileExt = path.extname(fileUri.fsPath);
-  const fileName = path.basename(fileUri.fsPath, fileExt);
-  const newFileName = `${fileName}-renamed${fileExt}`;
   const newFileUri = vscode.Uri.file(path.join(fileDir, newFileName));
 
   // Rename the file
