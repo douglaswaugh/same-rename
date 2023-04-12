@@ -2,7 +2,7 @@
   "name": "renamer",
   "displayName": "Renamer",
   "publisher": "omnicorp",
-  "description": "Renames file by lowercasing file names and replacing spces with hyphens",
+  "description": "Renames file by lowercasing file names and replacing spaces with hyphens",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.76.0"
