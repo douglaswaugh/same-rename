@@ -22,6 +22,10 @@
   "activationEvents": [
     "onCommand:DouglasWaugh.Renamer"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/douglaswaugh/renamer.git"
+  },
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
