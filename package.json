@@ -1,7 +1,7 @@
 {
   "name": "renamer",
   "displayName": "Renamer",
-  "publisher": "omnicorp",
+  "publisher": "DouglasWaugh",
   "description": "Renames file by lowercasing file names and replacing spaces with hyphens",
   "version": "0.0.1",
   "engines": {
@@ -14,8 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "renamer.customSaveAs",
-        "title": "Custom Save As"
+        "command": "DouglasWaugh.Renamer",
+        "title": "Renamer"
       }
     ]
   },

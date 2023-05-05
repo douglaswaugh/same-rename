@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 
-async function customSaveAs() {
+async function renamer() {
   const activeEditor = vscode.window.activeTextEditor;
   if (!activeEditor) {
     return;
@@ -11,7 +11,7 @@ async function customSaveAs() {
   const fileUri = document.uri;
 
   if (fileUri.scheme !== 'file') {
-    vscode.window.showErrorMessage('Cannot rename a non-file document');
+    vscode.window.showErrorMessage('Please save the file first');
     return;
   }
 
@@ -36,7 +36,7 @@ async function customSaveAs() {
 export function activate(context: vscode.ExtensionContext) {
   // Register the "Rename File" command
   context.subscriptions.push(
-    vscode.commands.registerCommand('renamer.customSaveAs', customSaveAs)
+    vscode.commands.registerCommand('DouglasWaugh.Renamer', renamer)
   );
 
   // The rest of your activate function code
