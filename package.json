@@ -19,6 +19,9 @@
       }
     ]
   },
+  "activationEvents": [
+    "onCommand:DouglasWaugh.Renamer"
+  ],
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
