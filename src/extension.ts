@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 
-async function renamer() {
+async function sameRename() {
   const activeEditor = vscode.window.activeTextEditor;
   if (!activeEditor) {
     return;
@@ -36,7 +36,7 @@ async function renamer() {
 export function activate(context: vscode.ExtensionContext) {
   // Register the "Rename File" command
   context.subscriptions.push(
-    vscode.commands.registerCommand('DouglasWaugh.Renamer', renamer)
+    vscode.commands.registerCommand('DouglasWaugh.SameRename', sameRename)
   );
 
   // The rest of your activate function code

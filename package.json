@@ -1,6 +1,6 @@
 {
-  "name": "renamer",
-  "displayName": "Renamer",
+  "name": "same-rename",
+  "displayName": "Same Rename",
   "publisher": "DouglasWaugh",
   "description": "Renames file by lowercasing file names and replacing spaces with hyphens",
   "version": "0.0.1",
@@ -14,17 +14,17 @@
   "contributes": {
     "commands": [
       {
-        "command": "DouglasWaugh.Renamer",
-        "title": "Renamer"
+        "command": "DouglasWaugh.SameRename",
+        "title": "Same Rename"
       }
     ]
   },
   "activationEvents": [
-    "onCommand:DouglasWaugh.Renamer"
+    "onCommand:DouglasWaugh.SameRename"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/douglaswaugh/renamer.git"
+    "url": "https://github.com/douglaswaugh/same-rename.git"
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
