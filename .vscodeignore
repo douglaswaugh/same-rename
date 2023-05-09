@@ -1,0 +1,9 @@
+.git/
+.vscode/
+src/
+node_modules/
+*.log
+.gitignore
+README.md
+LICENSE.md
+
