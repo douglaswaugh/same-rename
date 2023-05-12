@@ -26,3 +26,7 @@ It's more about unknown unknowns at this point.
 ### 0.0.1
 
 First release.  Lowercasing and replacing spaces with hyphens is hard coded.  Limited testing done.  I'm sure there will be issues!
+
+### 0.0.2
+
+Update README
