@@ -20,7 +20,7 @@ async function sameRename() {
     : document.uri;
 
   let fileName = path.basename(defaultUri.fsPath);
-  const newFileName = fileName.toLowerCase().split(' ').join('-');
+  const newFileName = rewriteFilename(fileName);
 
   const fileDir = path.dirname(fileUri.fsPath);
   const newFileUri = vscode.Uri.file(path.join(fileDir, newFileName));
@@ -31,6 +31,34 @@ async function sameRename() {
   // Open the renamed file in the editor
   const newDocument = await vscode.workspace.openTextDocument(newFileUri);
   await vscode.window.showTextDocument(newDocument);
+}
+
+function rewriteFilename(fileName: string)
+{
+  const config = vscode.workspace.getConfiguration("same-rename");
+  const shouldLowercase = config.get<boolean>("shouldLowercase", true);
+  const shouldEncodeADWiki = config.get<boolean>("shouldEncodeADWiki", false);
+  const splitChar = config.get<string>("splitChar", " ");
+  const substitutionChar = config.get<string>("substitutionChar", "-");
+  var parts = fileName.split(splitChar);
+  if (shouldLowercase) {
+    parts = parts.map(part => part.toLowerCase());
+  }
+  if (shouldEncodeADWiki) {
+    const mapping : { [key: string]: string } = {
+      ":": "%3A",
+      "<": "%3C",
+      ">": "%3E",
+      "*": "%2A",
+      "?": "%3F",
+      "|": "%7C",
+      "-": "%2D",
+      "\"": "%22"
+    }
+    parts = parts.map(part => [...part].map(char => mapping[char] == null ? char : mapping[char] ).join(""));
+  }
+
+  return parts.join(substitutionChar);
 }
 
 export function activate(context: vscode.ExtensionContext) {
